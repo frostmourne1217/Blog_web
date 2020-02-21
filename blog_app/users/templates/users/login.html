@@ -1,0 +1,26 @@
+{% extends "blog/base2.html" %}
+
+{% block content %}
+      <div class="col-md-8">
+
+        <!-- Blog Post -->
+        <br/>
+        <div class="card mb-5 mt-5">
+          <div class="card-header">
+            Login to your Account
+          </div>
+          <div class="card-header">
+            <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <ul>
+                <button type ="submit" class ="btn btn-primary">Login</button>
+                <a href="{% url 'register' %}" class ="btn btn-primary">Register</a>
+          </ul>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+{% endblock %}

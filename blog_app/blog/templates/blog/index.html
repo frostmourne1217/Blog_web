@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+      <!-- Blog Entries Column -->
+      <div class="col-md-10">
+        <h1>
+          </br>
+        </h1>
+
+
+        {% for blog in blog_post %}
+        <!-- Blog Post -->
+        <div class="card mb-5 mt-5">
+             
+          <div class="card-body">
+            <h3 class="card-title">{{ blog.Blog_title }}</h3>
+            <p class="card-text">{{ blog.Blog_text|truncatechars:100 }}</p>
+            <a href="{% url 'read-more' blog.pk %}" class="btn btn-outline-info">Read More &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{ blog.Blog_date }} by
+            <a href="#">{{ blog.Blog_author }}</a>
+          </div>
+        </div>
+        {% endfor %}
+
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <ul class="pagination justify-content-center mb-4">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous </a>
+          </li>
+          {% endif %}
+
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next &rarr;</a>
+          </li>
+          {% endif%}
+        </ul>
+        {% endif %}
+      </div>
+
+{% endblock %}

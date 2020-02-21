@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <!-- Blog Post -->
+        <br>
+        <a href="{% url 'blog-home' %}" class="btn btn-primary">Back to Home &larr;</a>
+        <div class="card mb-5 mt-3">
+          <div class="card-body">
+            <h3 class="card-title">{{ object.Blog_title }}</h3>
+            <p class="card-text">{{ object.Blog_text|linebreaks }}</p>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{ object.Blog_date }} by
+            <span class = "text-info mr-2">{{ object.Blog_author }}</span>
+          </div>
+        </div>
+
+      </div>
+
+{% endblock %}
